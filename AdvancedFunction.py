@@ -3,12 +3,15 @@ class AdvancedFunction:
     def __init__(self, type, operations):
         self.type = type
         self.operations = operations
-        pass
 
     def __add__(self,other):
+        if ((self.type == 'summation') and (other.type == 'summation')):
+            return AdvancedFunction('summation',self.operations+other.operations)
         return AdvancedFunction('summation',[self, other])
 
     def __mul__(self,other):
+        if ((self.type == 'multiplication') and (other.type == 'multiplication')):
+            return AdvancedFunction('multiplication',self.operations+other.operations)
         return AdvancedFunction('multiplication',[self, other])
 
     def compose(self,other):
